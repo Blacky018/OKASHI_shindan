@@ -1,20 +1,25 @@
-<<<<<<< HEAD
-# React + Vite
+# お菓子診断アプリ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+質問に答えると、あなたに合ったお菓子を診断してくれるWebアプリです。
 
-Currently, two official plugins are available:
+## 公開ページ
+https://blacky018.github.io/OKASHI_shindan/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 使用技術
+- React
+- Vite
+- JavaScript
+- CSS
+- GitHub Pages
 
-## React Compiler
+## 使い方
+1. 質問に答える
+2. ボタンを押す
+3. 診断結果が表示されます
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 工夫した点
+- シンプルで使いやすいUIを意識しました
+- 結果がすぐ分かるようにしました
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# OKASHI_shindan
->>>>>>> 495fbce090c5e989b2335823515bf57ab9499c5c
+## 今後追加したいこと
+- 診断結果の種類を増やす
