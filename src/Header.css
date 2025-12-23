@@ -1,4 +1,24 @@
 .header {
+  background: linear-gradient(135deg, #fff1eb, #ffe0f0);
+  padding: 10px 16px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.header-title {
+  color: #8d4b3e;
+  font-size: 24px;
+  padding: 8px 16px;
+  letter-spacing: 0.08em;
+}
+
+.header-subtitle {
+  font-size: 14px;
+  color: #6d4c41
+}
+
+
+/* .header {  
   position: sticky;
   top: 0;
   padding: 16px 0;
@@ -7,7 +27,7 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-}
+} */
 
 
 .header-title {
@@ -18,4 +38,10 @@
 .header-subtitle {
   color: #666;
   font-size: 0.9rem;
+}
+
+.start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

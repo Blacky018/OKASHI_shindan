@@ -1,3 +1,13 @@
 .result {
   text-align: center;
 }
+
+.restart-button {
+  margin-top: 24px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #ffb74d;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
