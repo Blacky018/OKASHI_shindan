@@ -1,9 +1,10 @@
 import "./Result.css"
 
-function Result({ result , onRestart}) {
+function Result({ result, onRestart }) {
   return (
     <div className="result">
-    <h2>あなたにおすすめのお菓子は {result}</h2>
+      <h2>{result.title}</h2>
+      <p>{result.description}</p>
 
       <button className="restart-button" onClick={onRestart}>
       もう一度診断する

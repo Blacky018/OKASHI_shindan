@@ -2,82 +2,65 @@ import { useState } from "react";
 import Question from "./Question";
 import Result from "./Result";
 import Header from "./Header";
+import { questions } from "./data/questions";
+import { RESULTS } from "./data/results";
+import { getResultByDistance } from "./utils/getResult";
 
-const questions = [
-  {
-    text: "甘いのとしょっぱいの、どっちが好き？",
-    choices: [
-      { label: "甘い", type: "sweet" },
-      { label: "しょっぱい", type: "salty" }
-    ]
-  },
-  {
-    text: "食感は？",
-    choices: [
-      { label: "サクサク", type: "crispy" },
-      { label: "しっとり", type: "soft" }
-    ]
-  }
-]
 
-const resetApp = () => {
-  setStep("start");
-  setCurrentQuestion(0);
-  setAnswers([]);
-};
-
+/* =====================
+   App
+===================== */
 function App() {
-  const [step, setStep] = useState("start"); // start | question | result
+  const [step, setStep] = useState("start");
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState([]);
+  const [scores, setScores] = useState({
+    sweet: 0,
+    texture: 0,
+  });
 
-  const handleAnswer = (type) => {
-    setAnswers([...answers, type]);
+  const handleAnswer = (axis, value) => {
+    setScores((prev) => ({
+      ...prev,
+      [axis]: prev[axis] + value,
+    }));
 
     if (currentQuestion + 1 < questions.length) {
-      setCurrentQuestion(currentQuestion + 1);
+      setCurrentQuestion((prev) => prev + 1);
     } else {
       setStep("result");
     }
   };
 
-const resetApp = () => {
-  setStep("start");
-  setCurrentQuestion(0);
-  setAnswers([]);
-};
+  const result =
+    step === "result"
+      ? getResultByDistance(scores, RESULTS)
+      : null;
 
-  const getResult = () => {
-    if (answers.includes("sweet") && answers.includes("soft")) {
-      return "チョコレートケーキ 🍫";
-    } else if (answers.includes("salty") && answers.includes("crispy")) {
-      return "ポテトチップス 🥔";
-    } else if (answers.includes("sweet") && answers.includes("crispy")) {
-      return "オレオ 🍪";
-    } else if (answers.includes("salty") && answers.includes("soft")) {
-      return "そんなもんねーーよ！！！！";
-    }
-    return "不明";
+
+
+  const resetApp = () => {
+    setStep("start");
+    setCurrentQuestion(0);
+    setScores({ sweet: 0, texture: 0 });
   };
 
   return (
     <div className="app">
       <Header
-  subtitle={
-    step === "start"
-      ? "簡単な質問であなたに合うお菓子を診断！"
-      : step === "question"
-      ? "質問に答えてください"
-      : "診断結果"
-  }
+        subtitle={
+          step === "start"
+            ? "直感で答えて、今食べたいお菓子を診断！"
+            : step === "question"
+            ? `質問 ${currentQuestion + 1} / ${questions.length}`
+            : "診断結果"
+        }
       />
-
 
       {step === "start" && (
         <div className="start">
-          <p>簡単な質問に答えて、あなたにぴったりなお菓子を診断します。</p>
+          <p>今の気分で深く考えずにポチっと選んでね。</p>
           <button onClick={() => setStep("question")}>
-            診断を開始する
+            診断をはじめる
           </button>
         </div>
       )}
@@ -90,7 +73,7 @@ const resetApp = () => {
       )}
 
       {step === "result" && (
-      <Result result={getResult()} onRestart={resetApp} />
+        <Result result={result} onRestart={resetApp} />
       )}
 
     </div>
